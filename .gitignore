@@ -1,0 +1,6 @@
+node_modules/
+workflow.txt
+.env
+temp/
+public/
+documents/

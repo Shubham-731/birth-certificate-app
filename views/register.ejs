@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | My User System</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <section class="h-screen">
+      <div class="px-6 h-full text-gray-800">
+        <div
+          class="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6"
+        >
+          <div
+            class="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0"
+          >
+            <img
+              src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+              class="w-full"
+              alt="Sample image"
+            />
+          </div>
+          <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
+            <h1 class="text-center text-blue-500 mb-3 text-3xl">
+              Register here
+            </h1>
+            <form id="registerForm">
+              <!-- Name inputs -->
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none peer"
+                  placeholder="First Name"
+                  id="firstName"
+                  required
+                />
+                <p class="mt-1 text-pink-600 text-sm" id="fNameErr"></p>
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                  id="lastName"
+                  placeholder="Last Name"
+                  required
+                />
+                <p class="mt-1 text-pink-600 text-sm" id="lNameErr"></p>
+              </div>
+
+              <!-- Email input -->
+              <div class="mb-3">
+                <input
+                  type="email"
+                  class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                  id="email"
+                  placeholder="Email address"
+                  required
+                />
+                <p class="mt-1 text-pink-600 text-sm" id="emailErr"></p>
+              </div>
+
+              <!-- Mobile number -->
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                  id="phoneNo"
+                  placeholder="Phone number"
+                  required
+                />
+              </div>
+
+              <!-- Password input -->
+              <div class="mb-3">
+                <input
+                  type="password"
+                  class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none peer"
+                  placeholder="Password"
+                  id="password"
+                  required
+                />
+                <p class="mt-1 text-pink-600 text-sm" id="passErr"></p>
+              </div>
+
+              <div class="mb-3">
+                <input
+                  type="password"
+                  class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                  id="confirmPassword"
+                  placeholder="Confirm Password"
+                  required
+                />
+                <p class="mt-1 text-pink-600 text-sm" id="confPassErr"></p>
+              </div>
+
+              <div class="flex justify-between items-center mb-3">
+                <div class="form-group form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                    id="rememberMe"
+                  />
+                  <label
+                    class="form-check-label inline-block text-gray-800"
+                    for="rememberMe"
+                    >Remember me</label
+                  >
+                </div>
+              </div>
+
+              <div class="text-center lg:text-left">
+                <button
+                  type="submit"
+                  class="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                >
+                  Register
+                </button>
+                <p class="text-sm font-semibold mt-2 pt-1 mb-0">
+                  Have an account?
+                  <a
+                    href="/users/login"
+                    class="text-red-600 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out"
+                    >Login</a
+                  >
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+
+  <script>
+    // Handle Errors
+    const fNameErr = document.getElementById("fNameErr");
+    const lNameErr = document.getElementById("lNameErr");
+    const emailErr = document.getElementById("emailErr");
+    const passErr = document.getElementById("passErr");
+    const confPassErr = document.getElementById("confPassErr");
+
+    const errorElements = [fNameErr, lNameErr, emailErr, passErr, confPassErr];
+
+    function displayErr() {
+      errorElements.forEach((errorElement) => {
+        if (errorElement.textContent == "") {
+          errorElement.classList.add("hidden");
+        } else {
+          errorElement.classList.remove("hidden");
+        }
+      });
+    }
+
+    displayErr();
+
+    // Register User
+    const registerForm = document.getElementById("registerForm");
+    registerForm.addEventListener("submit", registerUser);
+
+    async function registerUser(e) {
+      e.preventDefault();
+
+      const firstName = document.getElementById("firstName").value;
+      const lastName = document.getElementById("lastName").value;
+      const email = document.getElementById("email").value;
+      const phoneNo = document.getElementById("phoneNo").value;
+      const password = document.getElementById("password").value;
+      const confPassword = document.getElementById("confirmPassword").value;
+      const rememberMe = document.querySelector("#rememberMe:checked")
+        ? true
+        : false;
+
+      const res = await fetch("/users/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          phoneNo,
+          password,
+          confPassword,
+          rememberMe,
+        }),
+      });
+
+      const data = await res.json();
+      console.log(data);
+
+      if (res.status === 400) {
+        fNameErr.textContent = data.fNameErr;
+        lNameErr.textContent = data.lNameErr;
+        emailErr.textContent = data.emailErr;
+        passErr.textContent = data.passErr;
+        confPassErr.textContent = data.confPassErr;
+      }
+
+      if (res.status === 409) {
+        alert(data.msg);
+      }
+
+      if (res.status === 201) {
+        location.assign("/dashboard");
+      }
+
+      displayErr();
+    }
+  </script>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" lang="en, hi" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | My User System</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css
+"
+    />
+
+    <!-- Caleander CSS -->
+    <link rel="stylesheet" href="css/theme2.css" />
+  </head>
+  <body>
+    <%- include('./partials/Header.ejs') %>
+    <div class="container my-3">
+      <div class="text-center">
+        <h1 class="text-info">Create Birth Certificate</h1>
+        <p>Enter your credentials and apply for birth certificate here...</p>
+      </div>
+
+      <form
+        class="mw-75 container-fluid"
+        action="/birth-certificate/create"
+        method="post"
+      >
+        <!-- First name and last name -->
+        <div class="row mb-2 gx-2">
+          <div class="col-md-6 mb-2">
+            <label for="firstName" class="form-label">First Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstName"
+              name="firstName"
+              placeholder="Enter first name"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="lastName" class="form-label">Last Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              name="lastName"
+              placeholder="Enter last name"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Aadhar number and gender -->
+        <div class="row mb-2 gx-2">
+          <div class="col-md-6 mb-2">
+            <label for="aadharNo" class="form-label">Aadhar Number:</label>
+            <input
+              type="number"
+              class="form-control"
+              id="aadharNo"
+              name="aadharNo"
+              placeholder="Enter aadhar number"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="gender" class="form-label">Gender:</label>
+            <select class="form-select" id="gender" required name="gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Transgender">Transgender</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Date of birth -->
+        <div class="row mb-2 gx-2">
+          <div class="col-md-6 mb-2">
+            <label for="dob" class="form-label">Date of Birth:</label>
+            <input
+              type="date"
+              class="form-control"
+              id="dob"
+              name="dob"
+              placeholder="DATE OF BIRTH"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="formGroupExampleInput" class="form-label"
+              >Date of Birth (In words):</label
+            >
+            <input
+              type="text"
+              id="dobInWords"
+              class="form-control"
+              name="dobInWords"
+              placeholder="SIX-JANUARY-TWO THOUSAND"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Place of birth and father name -->
+        <div class="row mb-2 gx-2">
+          <div class="col-md-6 mb-2">
+            <label for="placeOfBirth" class="form-label">Place of Birth:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="placeOfBirth"
+              name="placeOfBirth"
+              placeholder="PLACE OF BIRTH"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="fatherName" class="form-label">Father Name:</label>
+            <input
+              type="text"
+              id="fatherName"
+              name="fatherName"
+              class="form-control"
+              placeholder="FATHER NAME"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Father's aadhar and mother name -->
+        <div class="row mb-2 gx-2">
+          <div class="col-md-6 mb-2">
+            <label for="fatherAadharNo" class="form-label"
+              >Father's Aadhar No:</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="fatherAadharNo"
+              name="fatherAadharNo"
+              placeholder="FATHER's AADHAR NO"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="motherName" class="form-label">Mother Name:</label>
+            <input
+              type="text"
+              id="motherName"
+              name="motherName"
+              class="form-control"
+              placeholder="MOTHER NAME"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Mother's aadhar and date of registration -->
+        <div class="row mb-2 gx-2">
+          <div class="col-md-6 mb-2">
+            <label for="motherAadharNo" class="form-label"
+              >Mother's Aadhar No:</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="motherAadharNo"
+              name="motherAadharNo"
+              placeholder="MOTHER'S AADHAR"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="registrationDate" class="form-label"
+              >Date of registration:</label
+            >
+            <input
+              type="date"
+              id="registrationDate"
+              name="registrationDate"
+              class="form-control"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Permanent address -->
+        <div class="row mb-2">
+          <div class="col-md-6 w-100">
+            <label for="permanentAddress" class="form-label"
+              >Permanent Address:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="permanentAddress"
+              name="permanentAddress"
+              placeholder="PERMANENT ADDRESS"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Address at the time of birth -->
+        <div class="row mb-2">
+          <div class="col-md-6 w-100">
+            <label for="addressOfBirth" class="form-label"
+              >Address of parents at the time of birth:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="parentAddressAtBirth"
+              name="parentAddressAtBirth"
+              placeholder="ADDRESS OF BIRTH"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Select state and hospital -->
+        <div class="row mb-2">
+          <div class="col-md-6 mb-2">
+            <label for="hospital" class="form-label">Hospital</label>
+            <select name="hospital" id="hospital" required class="form-select">
+              <% hospital.forEach(element => { %>
+              <option value="<%= element.hospitalValue %>">
+                <%= element.hospitalName %>, <%= element.district %>
+              </option>
+              <% }) %>
+            </select>
+          </div>
+
+          <div class="col-md-6">
+            <label for="state" class="form-label">State:</label>
+            <select
+              id="state"
+              class="form-select pe-none"
+              name="state"
+              required
+            >
+              <option>Select State</option>
+              <option value="Andhra Pradesh">Andhra Pradesh</option>
+              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+              <option value="Assam">Assam</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Chhattisgarh">Chhattisgarh</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Haryana">Haryana</option>
+              <option value="Himachal Pradesh">Himachal Pradesh</option>
+              <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+              <option value="Jharkhand">Jharkhand</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Kerala">Kerala</option>
+              <option value="Madhya Pradesh">Madhya Pradesh</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Manipur">Manipur</option>
+              <option value="Meghalaya">Meghalaya</option>
+              <option value="Orissa">Orissa</option>
+              <option value="Puducherry">Puducherry</option>
+              <option value="Punjab">Punjab</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Tamil Nadu">Tamil Nadu</option>
+              <option value="Telangana">Telangana</option>
+              <option value="Tripura">Tripura</option>
+              <option value="Uttar Pradesh" selected>Uttar Pradesh</option>
+              <option value="Uttarakhand">Uttarakhand</option>
+              <option value="West Bengal ">West Bengal</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Create birth certificate button -->
+        <div class="row my-2">
+          <div class="col-md-6 my-3 w-full m-auto">
+            <button
+              class="btn btn-info container-fluid"
+              id="createBCBtn"
+              type="submit"
+            >
+              Create Birth Certificate
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js
+"></script>
+  </body>
+</html>

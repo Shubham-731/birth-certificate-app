@@ -1,0 +1,30 @@
+{
+  "name": "my-user-system",
+  "version": "1.0.1",
+  "main": "app.js",
+  "author": "Shubham P",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
+    "bwip-js": "^3.1.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "html-pdf": "^3.0.1",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.4",
+    "qrcode": "^1.5.1",
+    "razorpay": "^2.8.2",
+    "shortid": "^2.2.16"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}

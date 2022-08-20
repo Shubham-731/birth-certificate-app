@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | My User System</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css
+"
+    />
+  </head>
+  <body>
+    <%- include('./partials/Header.ejs') %>
+    <div class="container my-3">
+      <div class="text-center">
+        <h1 class="text-primary lh-1">Wallet</h1>
+        <p class="lh-1">Your total wallet balance</p>
+      </div>
+
+      <div class="row gx-3 gy-3 w-full justify-content-around">
+        <div
+          class="col-md-4 border border-info border-1 hoverable p-3 mb-3 shadow bg-body rounded d-flex flex-row justify-content-between items-center"
+        >
+          <div>
+            <p class="fs-2 fw-bold">&#8377; <span><%= wallet %></span></p>
+            <p class="lead">Wallet Balance</p>
+          </div>
+          <div class="text-end opacity-50">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="100"
+              height="100"
+              fill="currentColor"
+              class="bi bi-wallet-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542.637 0 .987-.254 1.194-.542.226-.314.306-.705.306-.958a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2h-13z"
+              />
+              <path
+                d="M16 6.5h-5.551a2.678 2.678 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5c-.963 0-1.613-.412-2.006-.958A2.679 2.679 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-6z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div
+          class="col-md-4 border border-info border-1 hoverable p-3 mb-3 shadow bg-body rounded d-flex flex-row justify-content-between items-center"
+        >
+          <div class="w-50">
+            <label for="amount" class="form-label">Select amount:</label>
+            <select
+              name="amount"
+              id="selectAmount"
+              class="form-select"
+              required
+            >
+              <option value="100">100</option>
+              <option value="200">200</option>
+              <option value="300">300</option>
+            </select>
+            <button class="btn btn-info container-fluid mt-2" id="recharge">
+              Recharge Now
+            </button>
+          </div>
+          <div class="text-end opacity-50">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="100"
+              height="100"
+              fill="currentColor"
+              class="bi bi-coin"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z"
+              />
+              <path
+                d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+              />
+              <path
+                d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js
+"></script>
+
+    <!-- Razorpay JS -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script>
+      const rechargeBtn = document.getElementById("recharge");
+
+      rechargeBtn.addEventListener("click", recharge);
+
+      async function recharge(e) {
+        e.preventDefault();
+
+        const selectedAmt = document.getElementById("selectAmount");
+        const amount = selectedAmt.options[selectedAmt.selectedIndex].value;
+
+        const getOrderId = await fetch("/wallet/create/orderId", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ amount }),
+        }).then((res) => res.json());
+
+        const orderId = getOrderId.orderId;
+
+        const options = {
+          key: "rzp_test_H31ew5qagOpf1H",
+          amount: amount * 100,
+          currency: "INR",
+          name: "Recharge",
+          description: "Recharge your wallet for creating birth certificates.",
+          order_id: orderId,
+          theme: {
+            color: "#3289cc",
+          },
+          prefill: {
+            name: "Gaurav Kumar",
+            email: "gaurav.kumar@example.com",
+            contact: "9999999999",
+          },
+          handler: async function (response) {
+            const result = await fetch("/wallet/payment/verify", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(response),
+            });
+
+            if (result.status === 200) {
+              location.reload();
+            }
+          },
+        };
+
+        const razorpay = new Razorpay(options);
+        razorpay.on("payment.failed", function (response) {
+          alert("Payment failed. Please try again!");
+        });
+
+        razorpay.open();
+      }
+    </script>
+  </body>
+</html>

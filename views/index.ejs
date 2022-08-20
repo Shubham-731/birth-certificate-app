@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | My User System</title>
+
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <%- include('./partials/Header.ejs') %> <% if (user !== null) { %>
+    <h1 class="text-center text-blue-500 my-3 text-5xl">
+      Welcome
+      <span class="text-info">"<%= user.firstName %>"</span>
+    </h1>
+    <% } %>
+
+    <div class="container my-3">
+      <div class="row gx-3 gy-3 w-full justify-content-around">
+        <div
+          class="col-md-4 border border-info border-1 hoverable p-3 mb-3 shadow bg-body rounded d-flex flex-row justify-content-between items-center"
+        >
+          <div>
+            <p class="fs-2 fw-bold">&#8377; <%= user.wallet %></p>
+            <p class="lead">Wallet Balance</p>
+          </div>
+          <div class="text-end lead">
+            <div class="opacity-50">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="64"
+                height="64"
+                fill="currentColor"
+                class="bi bi-wallet-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542.637 0 .987-.254 1.194-.542.226-.314.306-.705.306-.958a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2h-13z"
+                />
+                <path
+                  d="M16 6.5h-5.551a2.678 2.678 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5c-.963 0-1.613-.412-2.006-.958A2.679 2.679 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-6z"
+                />
+              </svg>
+            </div>
+            <p class="text-primary mt-1">
+              <a href="/wallet" class="text-decoration-none">Add balance</a>
+            </p>
+          </div>
+        </div>
+        <div
+          class="col-md-4 border border-info border-1 hoverable p-3 mb-3 shadow bg-body rounded d-flex flex-row justify-content-between items-center"
+        >
+          <div>
+            <% if (user !== null) { %>
+            <p class="text-center text-blue-500 my-1 text-5xl fs-2 fw-bold">
+              <span class="text-info"
+                ><%= user.firstName %> <%= user.lastName %>
+              </span>
+            </p>
+            <% } %>
+            <p class="lead">Name</p>
+          </div>
+          <div class="text-end lead">
+            <div class="opacity-50">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="64"
+                height="64"
+                fill="currentColor"
+                class="bi bi-file-earmark-person"
+                viewBox="0 0 16 16"
+              >
+                <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                <path
+                  d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"
+                />
+              </svg>
+            </div>
+            <p class="text-primary mt-1">
+              <a href="#" class="text-decoration-none">Edit Profile</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
